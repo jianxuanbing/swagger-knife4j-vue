@@ -60,7 +60,7 @@ export default {
     }
   },
   mounted() {
-    //console("men5u-mounted------------------");
+    // console("men5u-mounted------------------");
     //console(this.location.path);
     const pathArr = urlToList(this.location.path);
     //console(pathArr);

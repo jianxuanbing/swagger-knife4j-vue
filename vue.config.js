@@ -22,6 +22,7 @@ module.exports = {
     }
   },
   devServer: {
+    hotOnly: true,
     proxy: {
       "/": {
         target: 'http://localhost:25899/',
