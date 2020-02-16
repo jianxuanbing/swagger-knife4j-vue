@@ -38,7 +38,7 @@ const constants = {
   globalTreeTableModelParams: "Knife4jGlobalTreeTableModelParams",
   defaultSettings: {
     showApiUrl: false, //接口api地址不显示
-    showTagStatus: false, //分组tag显示description属性,针对@Api注解没有tags属性值的情况
+    showTagStatus: true, //分组tag显示description属性,针对@Api注解没有tags属性值的情况
     enableSwaggerBootstrapUi: false, //是否开启swaggerBootstrapUi增强
     treeExplain: true,
     enableDynamicParameter: false, //开启动态参数

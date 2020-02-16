@@ -26,11 +26,33 @@ export default {
         return (
           <router-link to={item.path}>
             {item.icon ? <my-icon type={item.icon}></my-icon> : ""}
+            {getMethodTag(item)}
             <span>{item.name}</span>
           </router-link>
         );
       }
     };
+
+    const getMethodTag = item => {
+      var color="#49cc90";
+      switch(item.method){
+        case "get":
+          color="#61affe";
+          break;
+        case "post":
+          color="#49cc90";
+          break;
+        case "put":
+          color="#fca130";
+          break;
+        case "delete":
+          color="#f93e3e";
+          break;
+      }
+      return (
+            <a-tag color={color}>{item.method}</a-tag>
+      );
+    }
 
     const getSubMenuOrItem = item => {
       if (item.children && item.children.some(child => child.name)) {

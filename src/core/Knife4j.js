@@ -1597,19 +1597,36 @@ SwaggerBootstrapUi.prototype.createDetailMenu = function (addFlag) {
         hasNew: tag.hasNew || tag.hasChanged,
         children: []
       }
+      
       tag.childrens.forEach(function (children) {
-        //})
-        //$.each(tag.childrens, function (i, children) {
-        var tabSubMenu = {
-          groupName: groupName,
-          groupId: groupId,
-          key: md5(groupName + children.summary + children.operationId),
-          name: children.summary,
-          description: children.description,
-          path: children.operationId,
-          component: 'ApiInfo',
-          hasNew: tag.hasNew || tag.hasChanged,
-          deprecated: children.deprecated
+        console.log('tag信息',children);
+        var tabSubMenu = {};
+        if(children.summary === undefined || children.summary === null || children.summary === ''){
+          tabSubMenu = {
+            groupName: groupName,
+            groupId: groupId,
+            key: md5(groupName + children.showUrl + children.operationId),
+            name: children.showUrl,
+            description: children.description,
+            path: children.operationId,
+            component: 'ApiInfo',
+            hasNew: tag.hasNew || tag.hasChanged,
+            deprecated: children.deprecated,
+            method: children.methodType.toLowerCase()
+          };
+        }else{
+          tabSubMenu = {
+            groupName: groupName,
+            groupId: groupId,
+            key: md5(groupName + children.summary + children.operationId),
+            name: children.summary,
+            description: children.description,
+            path: children.operationId,
+            component: 'ApiInfo',
+            hasNew: tag.hasNew || tag.hasChanged,
+            deprecated: children.deprecated,
+            method: children.methodType.toLowerCase()
+          };
         }
         tagMenu.children.push(tabSubMenu);
 
@@ -1618,7 +1635,7 @@ SwaggerBootstrapUi.prototype.createDetailMenu = function (addFlag) {
 
     }
   })
-  ////console(menuArr)
+  that.log(menuArr)
   var mdata = KUtils.formatter(menuArr);
   //添加全局参数
   if (addFlag) {
