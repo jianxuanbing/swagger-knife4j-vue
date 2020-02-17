@@ -34,7 +34,7 @@ export default {
     };
 
     const getMethodTag = item => {
-      var color="#49cc90";
+      var color = "";
       switch(item.method){
         case "get":
           color="#61affe";
@@ -48,6 +48,9 @@ export default {
         case "delete":
           color="#f93e3e";
           break;
+      }
+      if(color === ""){
+        return null;
       }
       return (
             <a-tag color={color}>{item.method}</a-tag>
